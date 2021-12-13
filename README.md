@@ -1,20 +1,31 @@
 # Install_Carla-0.9.10_on_Ubuntu20.04
 依据Carla官方给出的快速安装包指南并结合自身安装经验总结
 
-**[Before you begin](#before-you-begin)**<br>
-**[Install amdgpu pro](#install-amdgpu-pro)**<br>
-**[Troubleshooting](#troubleshooting)**<br>
-**[Compatibility](#compatibility)**<br>
-**[Notes and Miscellaneous](#notes-and-miscellaneous)**<br>
-**[Building the Extension Bundles](#building-the-extension-bundles)**<br>
-**[Next Steps, Credits, Feedback, License](#next-steps)**<br>
-
+* [Before you begin](#before-you-begin)
+* [Install amdgpu pro](#install-amdgpu-pro)
+* [Install and Upgrade Python3](#install-and-upgrade-python3)
+* [Download Carla](#download-carla)
+* [Before you begin](#before-you-begin)
+* [Before you begin](#before-you-begin)
 ------
-## Before you begin
-123123123
-## Install amdgpu pro
 
-## Chrome Web Store
+Before you begin
+------
+
+
+
+Install amdgpu pro
+------
+
+Install and Upgrade Python3
+------
+
+
+Download Carla
+------
+
+
+
 
 Go to the [Chrome Web Store page for *Markdown Here*](https://chrome.google.com/webstore/detail/elifhakcjgalahccnjkneoccemfahfoa) and install normally.
 
