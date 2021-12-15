@@ -21,10 +21,20 @@ Carla官方给出了两种不同的安装方案，一种为快速安装，另一
 
 Before you begin
 ------
-The following requirements should be fulfilled before installing Carla 0.9.10 :
-- 硬件与配置
-- 在不破坏ubuntu自带python版本的情况下安装python3.7
 
+- 以下为我自己的硬件配置，其中比较关键是显卡型号。因为不同显卡型号涉及到不同的显卡驱动的安装。如果你的电脑配备了其他型号的显卡（比如Nidia），那么请查看其他的相关安装说明。但是无论如何请满足官方文档中给出的硬件最低配置要求，即至少6GB显存的显卡以及至少20GB的空余硬盘空间。其他的要求详见官方指南。
+    
+|组件|型号|
+|----|-----|
+|CPU|Intel® Core™ i5-10500 CPU @ 3.10GHz × 12|
+|graphics|AMD® Radeon RTX 6600 8G|
+|RAM|16GB|
+|Memory|1TB|
+|System|Ubuntu 20.04.3 LTS|
+|GNOME|3.36.8|
+  
+
+**此外，以下的安装过程适用于完全全新的Ubuntu20.04系统，即刚刚安装好Ubuntu系统的电脑。因此，一个假设是Ubuntu系统中并未配置任何关于Carla或者Python3.7的依赖项。如果你已经安装过类似的依赖项，那么请参考以下过程并适当作出调整。请注意，每一台电脑或者每一个系统根据使用者及其使用目的的不同一般来说都是不同的，而不同的配置往往造成安装过程的差异。**
 
 Install amdgpu pro
 ------
