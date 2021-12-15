@@ -82,19 +82,108 @@ sudo ./amdgpu-pro-install -y
 
 Install and Upgrade Python3
 ------
-- 升级
+- 升级并更新
+```
+sudo apt update
+
+sudo apt upgrade
+```
+
 - 配置依赖项
-- 下载python3.7包，解压并进入
+```
+sudo apt install build-essential make cmake -y
+sudo apt install libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev -y
+sudo apt-get install zlib1g-dev
+```
+**请注意，这一步十分重要。若在安装过程中报错并指出还需要安装其他的依赖项，那么请根据报错信息一步一步安装所有依赖项，直到最后全部安装成功。**
+
+
+- 下载python3.7，解压并进入。我选择的版本为3.7.7，经过实测3.7.8也可以。
+```
+tar -zxvf Python-3.7.7.tgz
+
+cd Python-3.7.7
+```
+
+
 - 配置
-- 编译并安装
+```
+./configure --enable-optimizations
+```
+
+
+- 编译并安装,该过程也许会持续一段时间，根据电脑性能的不同。如果安装过程中报错，那么意味着之前的依赖项有未正确安装或者缺少依赖项。请确保所有依赖项都被正确安装。
+```
+sudo make
+sudo make install
+```
+
+
 - 创建软连接
+
+**为了不破坏Ubuntu20.04原生python3.8，必须对新安装的python3.7建立软连接**
+
+在安装好python3.7之后，找到其安装位置，你应该可以在如下位置找到安装好的python3.7
+
+![pic](https://github.com/yuehai90/Install_Carla-0.9.10_on_Ubuntu20.04/blob/main/img/2021-12-15%2013-43-38%20python3.7.png)
+
+但如果你未在该文件夹内找到，可以使用搜索功能定位出安装位置。一般来说它总是会被安装在/usr/local中的某一个地方
+
+**使用你电脑中安装好的python3.7的位置，并在/usr/bin中创建软连接。以下命令以我的安装位置为例**
+```
+sudo ln -s -f /usr/local/bin/python3.7/bin/python3.7 /usr/bin/python3.7
+```
+
+
 - 安装并更新pip3.7
+在建立好软连接之后，可以通过在命令行输入python3.7而对其直接调用。调用python3.7安装对应的pip
+
+```
+sudo apt-get install python3.7-pip
+```
+
+之后以同样的方式对pip3.7创建软连接
+```
+sudo ln -s -f /usr/local/bin/python3.7/bin/pip3.7 /usr/bin/pip3.7
+```
+
+
 - 添加pygame numpy
+最后，通过在命令行直接调用pip3.7，来对python3.7导入两个carla需要用到的库
+```
+pip3.7 install --user pygame numpy
+```
+至此，python3.7的环境搭建完成
+
 
 Download and run Carla
 ------
-- 下载carla包并移动到文件夹，在主目录下，也可以自行安排位置
-- 解压缩
-- 运行carla
-- 用python3.7打开示例
+- 下载carla包并移动到主目录下名为carla的（新创建）文件夹中。你也可以自行安排carla文件的位置。我使用的carla版本为0.9.10
+![pic](https://github.com/yuehai90/Install_Carla-0.9.10_on_Ubuntu20.04/blob/main/img/2021-12-15%2014-01-02%20carla%20download.png)
 
+- 找到你放置carla压缩包的位置并解压缩
+```
+tar -zxvf CARLA_0.9.10.tar.gz
+```
+
+- 运行carla以及python examples
+
+当解压缩完成后，你应该能够看到CarlaUE4.sh，通过如下命令启动carla
+```
+./CarlaUE4.sh
+```
+
+至此，carla环境的搭建已完成。
+
+**如果需要查看Carla中自带的PythonAPI中的示例，一定要通过python3.7调用，而不是pyghon3。以下是一个调用的例子**
+```
+cd PythonAPI/examples
+
+python3.7 spawn_npc.py
+```
+
+**在运行任何通过PythonAPI调用的代码时，一定要保证CarlaUE4.sh的运行，不能够将其关闭而单独调用PythonAPI中的代码**
+
+![pic](https://github.com/yuehai90/Install_Carla-0.9.10_on_Ubuntu20.04/blob/main/img/2021-12-15%2014-10-22%20carla%20run.png)
+
+![pic](https://github.com/yuehai90/Install_Carla-0.9.10_on_Ubuntu20.04/blob/main/img/2021-12-15%2014-11-52%20carla%20run.png)
