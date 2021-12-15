@@ -12,8 +12,7 @@ Carla官方给出了两种不同的安装方案，一种为快速安装，另一
 * [Install and Upgrade Python3](#install-and-upgrade-python3)
   
 * [Download and run Carla](#download-and-run-carla)
-* [Before you begin](#before-you-begin)
-* [Before you begin](#before-you-begin)
+
 ------
 
 
