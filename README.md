@@ -19,6 +19,8 @@ Carla官方给出了两种不同的安装方案，一种为快速安装，另一
 * [Before you begin](#before-you-begin)
 ------
 
+
+
 Before you begin
 ------
 
@@ -32,19 +34,51 @@ Before you begin
 |Memory|1TB|
 |System|Ubuntu 20.04.3 LTS|
 |GNOME|3.36.8|
-  
+
+
 
 **此外，以下的安装过程适用于完全全新的Ubuntu20.04系统，即刚刚安装好Ubuntu系统的电脑。因此，一个假设是Ubuntu系统中并未配置任何关于Carla或者Python3.7的依赖项。如果你已经安装过类似的依赖项，那么请参考以下过程并适当作出调整。请注意，每一台电脑或者每一个系统根据使用者及其使用目的的不同一般来说都是不同的，而不同的配置往往造成安装过程的差异。**
 
+
+
 Install amdgpu pro
 ------
-- 下载官方提供的包文件
-- 解压缩
+- 下载官方驱动，这里选择的版本是Radeon™ Software for Linux® 21.30 Release，是配系统为Ubuntu20.04.3
+
+![pic](https://github.com/yuehai90/Install_Carla-0.9.10_on_Ubuntu20.04/blob/main/img/2021-12-15%2011-28-29%20amdpro%20download.png)
+
+- 在下载位置解压缩，比如在/Downloads
+```
+tar -Jxvf amdgpu-pro-21.30-1290604-ubuntu-20.04.tar.xz
+```
+
+
 - 查看系统是否已识别显卡
+```
+lspci | grep -i vga
+```
+若系统已识别AMD显卡，则应该看到以下显示
+![pic](https://github.com/yuehai90/Install_Carla-0.9.10_on_Ubuntu20.04/blob/main/img/2021-12-15%2012-00-54%20amd1.png)
+
 - 查看系统是否已安装驱动
-- 安装驱动并重启
+```
+dpkg -l amdgpu-pro
+```
+应该看到未安装的信息
+
+
+- 如果已经安装了其他版本的任何驱动，那么应该卸载。之后再次进入刚才解压缩的文件夹，并安装驱动
+```
+cd /Downloads/amdgpu-pro-21.30-1290604-ubuntu-20.04
+
+sudo ./amdgpu-pro-install -y
+```
+等待安装完成并重启
+
+
 - 重启后黑屏问题
 
+许多用户报告在安装了amdgpu pro之后重启黑屏的故障。我本人在安装过程中未曾遇到。如果你遇到了类似问题请查阅相关解决方案。其次，大量解决方案指出解决重启黑屏问题需要卸载amdgpu pro驱动，并仅仅安装amdgpu驱动。**请注意，为了保证carla的正确运行，必须安装amdgpu pro驱动。**
 
 Install and Upgrade Python3
 ------
